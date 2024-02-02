@@ -1,0 +1,50 @@
+1. loan_types:
+   - Fields:
+      - loan_type_id: unique identifier for each loan type
+      - name: name of the loan type (e.g., Personal Loan, Home Loan, Auto Loan)
+      - interest_rate: default interest rate for the loan type
+      - max_duration: maximum allowed duration for the loan type
+   - Purpose: Define and manage different categories of loans available in the app.
+
+2. loans:
+   - Fields:
+      - loan_id: unique identifier for each loan
+      - user_id: foreign key referencing the user who applied for the loan
+      - loan_type_id: foreign key referencing the type of loan selected
+      - loan_amount: the requested loan amount
+      - interest_rate: interest rate for the specific loan instance
+      - duration_months: duration of the loan in months
+      - start_date: date when the loan was initiated
+   - Purpose: Track information about individual loans, associating each loan with a specific user and loan type.
+
+3. payments:
+   - Fields:
+      - payment_id: unique identifier for each payment
+      - loan_id: foreign key referencing the loan associated with the payment
+      - payment_amount: the amount paid in a specific month
+      - payment_date: date when the payment was made
+   - Purpose: Record payments made by users for their loans.
+
+4. notifications:
+   - Fields:
+      - notification_id: unique identifier for each notification
+      - user_id: foreign key referencing the user to whom the notification belongs
+      - message: content of the notification
+      - timestamp: date and time when the notification was generated
+   - Purpose: Manage notifications to be sent to users, such as payment reminders or updates.
+
+5. settings:
+   - Fields:
+      - user_id: foreign key referencing the user for whom the settings apply
+      - notification_preference: user's preference for receiving notifications (e.g., email, in-app)
+      - theme_preference: user's preferred app theme (light or dark)
+   - Purpose: Store user-specific settings to personalize the app experience.
+
+6. logs:
+   - Fields:
+      - log_id: unique identifier for each log entry
+      - user_id: foreign key referencing the user associated with the log
+      - action: description of the user's action (e.g., loan application, payment)
+      - timestamp: date and time when the action occurred
+   - Purpose: Maintain a log of user actions for auditing and analysis.
+
